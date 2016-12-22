@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, ViewContainerRef} from '@angular/core';
+import {ComponentsHelper} from "ng2-bootstrap";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+
+  public constructor(private componentsHelper:ComponentsHelper, private viewContainerRef:ViewContainerRef) {
+    // You need this small hack in order to catch application root view container ref
+    componentsHelper.setRootViewContainerRef(viewContainerRef);
+  }
 }
